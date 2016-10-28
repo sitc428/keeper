@@ -15,8 +15,9 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:layout_height="wrap_content"
     android:background="@drawable/touch_feedback"
     android:orientation="horizontal"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -24,17 +25,57 @@
     android:paddingBottom="@dimen/list_item_padding"
     android:paddingTop="@dimen/list_item_padding">
 
-    <CheckBox
-        android:id="@+id/complete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical" />
-
-    <TextView
-        android:id="@+id/title"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:contentDescription="Sample Image"
+                android:layout_width="match_parent"
+                app:srcCompat="@drawable/sample"
+                android:id="@+id/imageView"
+                android:layout_weight="1"
+                android:layout_height="80dp"
+                android:cropToPadding="true"
+                android:adjustViewBounds="true"
+                android:fadingEdge="horizontal|vertical"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <CheckBox
+                    android:id="@+id/complete"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
 </LinearLayout>

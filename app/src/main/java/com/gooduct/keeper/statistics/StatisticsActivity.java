@@ -28,8 +28,10 @@ import android.view.MenuItem;
 
 import com.gooduct.keeper.Injection;
 import com.gooduct.keeper.R;
+import com.gooduct.keeper.helpers.PrefManager;
 import com.gooduct.keeper.tasks.TasksActivity;
 import com.gooduct.keeper.util.ActivityUtils;
+import com.gooduct.keeper.welcome.WelcomeActivity;
 
 /**
  * Show statistics for tasks.
@@ -92,12 +94,18 @@ public class StatisticsActivity extends AppCompatActivity {
                             case R.id.list_navigation_menu_item:
                                 Intent intent =
                                         new Intent(StatisticsActivity.this, TasksActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                                 break;
                             case R.id.statistics_navigation_menu_item:
                                 // Do nothing, we're already on that screen
+                                break;
+                            case R.id.tutorial_navigation_menu_item:
+                                PrefManager pref = new PrefManager(getApplicationContext());
+                                pref.setForceWelcome(true);
+                                intent = new Intent(StatisticsActivity.this, WelcomeActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
                                 break;
                             default:
                                 break;

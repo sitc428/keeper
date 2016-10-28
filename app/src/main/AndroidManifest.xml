@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2015 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,11 +12,14 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  -->
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gooduct.keeper">
 
-<manifest
-    package="com.gooduct.keeper"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="false"
@@ -26,16 +28,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-                android:name="com.gooduct.keeper.tasks.TasksActivity"
-                android:theme="@style/AppTheme.OverlapSystemBar">
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.gooduct.keeper.taskdetail.TaskDetailActivity" />
-        <activity android:name="com.gooduct.keeper.addedittask.AddEditTaskActivity" />
-        <activity android:name="com.gooduct.keeper.statistics.StatisticsActivity" />
+        <activity
+            android:name=".tasks.TasksActivity"
+            android:theme="@style/AppTheme.OverlapSystemBar" />
+        <activity android:name=".taskdetail.TaskDetailActivity" />
+        <activity android:name=".addedittask.AddEditTaskActivity" />
+        <activity android:name=".statistics.StatisticsActivity" />
+        <activity android:name=".ForgotPwdActivity" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".welcome.WelcomeActivity" />
     </application>
 
 </manifest>

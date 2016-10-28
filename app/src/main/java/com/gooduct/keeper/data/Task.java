@@ -25,7 +25,7 @@ import com.google.common.base.Strings;
 import java.util.UUID;
 
 /**
- * Immutable model class for a Task.
+ * Immutable model helpers for a Task.
  */
 public final class Task {
 

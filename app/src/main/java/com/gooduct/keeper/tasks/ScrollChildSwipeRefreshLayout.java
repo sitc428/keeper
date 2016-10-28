@@ -26,7 +26,7 @@ import android.view.View;
  * Extends {@link SwipeRefreshLayout} to support non-direct descendant scrolling views.
  * <p>
  * {@link SwipeRefreshLayout} works as expected when a scroll view is a direct child: it triggers
- * the refresh only when the view is on top. This class adds a way (@link #setScrollUpChild} to
+ * the refresh only when the view is on top. This helpers adds a way (@link #setScrollUpChild} to
  * define which view controls this behavior.
  */
 public class ScrollChildSwipeRefreshLayout extends SwipeRefreshLayout {

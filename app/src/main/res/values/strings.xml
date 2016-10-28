@@ -15,9 +15,9 @@
   -->
 
 <resources>
-    <string name="app_name">TO-DO-MVP</string>
-    <string name="add_task">New TO-DO</string>
-    <string name="edit_task">Edit TO-DO</string>
+    <string name="app_name">Keeper</string>
+    <string name="add_task">New KEEP</string>
+    <string name="edit_task">Edit KEEP</string>
     <string name="task_marked_complete">Task marked complete</string>
     <string name="task_marked_active">Task marked active</string>
     <string name="loading_tasks_error">Error while loading tasks</string>
@@ -25,12 +25,12 @@
     <string name="menu_filter">Filter</string>
     <string name="menu_clear">Clear completed</string>
     <string name="menu_delete_task">Delete task</string>
-    <string name="navigation_view_header_title">TO-DOs</string>
+    <string name="navigation_view_header_title">KEEPs</string>
     <string name="title_hint">Title</string>
-    <string name="description_hint">Enter your TO-DO here.</string>
-    <string name="empty_task_message">TO DOs cannot be empty</string>
-    <string name="successfully_saved_task_message">TO-DO saved</string>
-    <string name="list_title">TO-DO List</string>
+    <string name="description_hint">Enter your KEEP here.</string>
+    <string name="empty_task_message">KEEPs cannot be empty</string>
+    <string name="successfully_saved_task_message">KEEP saved</string>
+    <string name="list_title">Keeper List</string>
     <string name="statistics_title">Statistics</string>
     <string name="statistics_no_tasks">You have no tasks.</string>
     <string name="statistics_active_tasks">Active tasks:</string>
@@ -47,13 +47,59 @@
     <string name="nav_all">All</string>
     <string name="nav_active">Active</string>
     <string name="nav_completed">Completed</string>
-    <string name="label_all">All TO-DOs</string>
-    <string name="label_active">Active TO-DOs</string>
-    <string name="label_completed">Completed TO-DOs</string>
-    <string name="no_tasks_all">You have no TO-DOs!</string>
-    <string name="no_tasks_active">You have no active TO-DOs!</string>
-    <string name="no_tasks_completed">You have no completed TO-DOs!</string>
-    <string name="no_tasks_add">Add a TO-DO item +</string>
+    <string name="label_all">All KEEPs</string>
+    <string name="label_active">Active KEEPs</string>
+    <string name="label_completed">Completed KEEPs</string>
+    <string name="no_tasks_all">You have no KEEPs!</string>
+    <string name="no_tasks_active">You have no active KEEPs!</string>
+    <string name="no_tasks_completed">You have no completed KEEPs!</string>
+    <string name="no_tasks_add">Add a KEEP item +</string>
     <string name="refresh">Refresh</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_guest">Experience Keeper</string>
+    <string name="title_activity_forgotPwd">Please input your email address to reset password</string>
 
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_forgot_pwd">Forgot password?</string>
+    <string name="action_signup">Sign Up</string>
+    <string name="action_sign_up">New here? Sign Up</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Hello Food!</string>
+    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
+
+    <string name="slide_2_title">Movie Tickets</string>
+    <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
+
+    <string name="slide_3_title">Great Discounts</string>
+    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
+
+    <string name="slide_4_title">World Travel</string>
+    <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+
+    <string name="action_submit">Submit</string>
+    <string name="hint_signup_name">Your Name</string>
+    <string name="hint_signup_email">Email</string>
+    <string name="hint_signup_pwd">Password</string>
+    <string name="title_signup">Please fill in below information for signing up</string>
+    <string name="tutorial_title">Tutorial</string>
 </resources>
