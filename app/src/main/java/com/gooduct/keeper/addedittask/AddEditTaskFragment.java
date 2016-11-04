@@ -26,6 +26,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.gooduct.keeper.R;
@@ -85,6 +87,14 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.addtask_frag, container, false);
         mTitle = (TextView) root.findViewById(R.id.add_task_title);
+
+        Spinner spinner = (Spinner) root.findViewById(R.id.spTags);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.tags, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+
         mDescription = (TextView) root.findViewById(R.id.add_task_description);
 
         setHasOptionsMenu(true);

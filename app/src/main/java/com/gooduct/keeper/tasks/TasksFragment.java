@@ -17,6 +17,11 @@
 package com.gooduct.keeper.tasks;
 
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.shapes.RectShape;
+import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -24,6 +29,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.Space;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
@@ -44,8 +50,11 @@ import com.gooduct.keeper.addedittask.AddEditTaskActivity;
 import com.gooduct.keeper.data.Task;
 import com.gooduct.keeper.taskdetail.TaskDetailActivity;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -81,7 +90,7 @@ public class TasksFragment extends Fragment implements TasksContract.View {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mListAdapter = new TasksAdapter(new ArrayList<Task>(0), mItemListener);
+        mListAdapter = new TasksAdapter(new ArrayList<Task>(0), mItemListener, this.getContext());
     }
 
     @Override
@@ -354,12 +363,14 @@ public class TasksFragment extends Fragment implements TasksContract.View {
 
     private static class TasksAdapter extends BaseAdapter {
 
+        private android.content.Context context;
         private List<Task> mTasks;
         private TaskItemListener mItemListener;
 
-        public TasksAdapter(List<Task> tasks, TaskItemListener itemListener) {
+        public TasksAdapter(List<Task> tasks, TaskItemListener itemListener, android.content.Context context) {
             setList(tasks);
             mItemListener = itemListener;
+            this.context = context;
         }
 
         public void replaceData(List<Task> tasks) {
@@ -396,8 +407,27 @@ public class TasksFragment extends Fragment implements TasksContract.View {
 
             final Task task = getItem(i);
 
-            TextView titleTV = (TextView) rowView.findViewById(R.id.title);
+            TextView titleTV = (TextView) rowView.findViewById(R.id.tvTitle);
             titleTV.setText(task.getTitleForList());
+
+            LinearLayout layoutTags = (LinearLayout)rowView.findViewById(R.id.layoutTags);
+            layoutTags.removeAllViews();
+
+            String[] tags = {"TAG1", "TAG2", "TAG3", "TAG4", "TAG5", "TAG6", "TAG7", "TAG8", "TAG9"};
+
+            Random rnd = new Random();
+            for (int t=0; t<3;t++) {
+                TextView tvTag = new TextView(context);
+                tvTag.setPadding(10, 5, 10, 5);
+                tvTag.setBackgroundResource(R.drawable.tags_rounded_corners);
+                tvTag.setText(tags[rnd.nextInt(9)]);
+                tvTag.setTextIsSelectable(true);
+                layoutTags.addView(tvTag);
+
+                Space space = new Space(context);
+                space.setMinimumWidth(20);
+                layoutTags.addView(space);
+            }
 
             CheckBox completeCB = (CheckBox) rowView.findViewById(R.id.complete);
 

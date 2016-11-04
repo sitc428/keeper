@@ -28,7 +28,8 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" >
+        android:layout_weight="1"
+        android:layout_marginBottom="5dp">
 
         <LinearLayout
             android:orientation="vertical"
@@ -66,13 +67,23 @@
                     android:layout_width="wrap_content" />
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:id="@+id/layoutTags"
+                android:paddingBottom="5dp"></LinearLayout>
 
         </LinearLayout>
 
