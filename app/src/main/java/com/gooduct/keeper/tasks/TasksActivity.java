@@ -30,6 +30,7 @@ import android.view.MenuItem;
 
 import com.gooduct.keeper.Injection;
 import com.gooduct.keeper.R;
+import com.gooduct.keeper.data.source.TasksRepository;
 import com.gooduct.keeper.helpers.PrefManager;
 import com.gooduct.keeper.statistics.StatisticsActivity;
 import com.gooduct.keeper.util.ActivityUtils;

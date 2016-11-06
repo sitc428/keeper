@@ -16,6 +16,7 @@
 
 package com.gooduct.keeper.data.source.remote;
 
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 
@@ -23,6 +24,12 @@ import com.gooduct.keeper.data.Task;
 import com.gooduct.keeper.data.source.TasksDataSource;
 import com.google.common.collect.Lists;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -30,7 +37,7 @@ import java.util.Map;
 /**
  * Implementation of the data source that adds a latency simulating network.
  */
-public class TasksRemoteDataSource implements TasksDataSource {
+public class TasksRemoteDataSource extends AsyncTask implements TasksDataSource {
 
     private static TasksRemoteDataSource INSTANCE;
 
@@ -54,6 +61,40 @@ public class TasksRemoteDataSource implements TasksDataSource {
     // Prevent direct instantiation.
     private TasksRemoteDataSource() {}
 
+    @Override
+    protected String doInBackground(Object[] params) {
+        String fullName = params[0].toString();
+        String userName = params[1].toString();
+        String passWord = params[2].toString();
+        String phoneNumber = params[3].toString();
+        String emailAddress = params[4].toString();
+
+        String link;
+        String data;
+        BufferedReader bufferedReader;
+        String result;
+
+        try {
+            data = "?";
+//            data = "?fullname=" + URLEncoder.encode(fullName, "UTF-8");
+//            data += "&username=" + URLEncoder.encode(userName, "UTF-8");
+//            data += "&password=" + URLEncoder.encode(passWord, "UTF-8");
+//            data += "&phonenumber=" + URLEncoder.encode(phoneNumber, "UTF-8");
+//            data += "&emailaddress=" + URLEncoder.encode(emailAddress, "UTF-8");
+
+            link = "http://gooduct.com/V1/clips/show" + data;
+            URL url = new URL(link);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+            bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            result = bufferedReader.readLine();
+            return result;
+        } catch (Exception e) {
+            return new String("Exception: " + e.getMessage());
+        }
+    }
+
+
     private static void addTask(String title, String description) {
         Task newTask = new Task(title, description);
         TASKS_SERVICE_DATA.put(newTask.getId(), newTask);
@@ -67,11 +108,15 @@ public class TasksRemoteDataSource implements TasksDataSource {
     @Override
     public void getTasks(final @NonNull LoadTasksCallback callback) {
         // Simulate network by delaying the execution.
+        Object result = this.execute();
+        final Map<String, Task> map = new HashMap<String, Task>();
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                callback.onTasksLoaded(Lists.newArrayList(TASKS_SERVICE_DATA.values()));
+                //callback.onTasksLoaded(Lists.newArrayList(TASKS_SERVICE_DATA.values()));
+                callback.onTasksLoaded(Lists.newArrayList(map.values()));
             }
         }, SERVICE_LATENCY_IN_MILLIS);
     }
